@@ -28,5 +28,13 @@ public class PrimeiroProjeto {
         
         animal01.emitirSom();
         cachorro01.emitirSom();
+        
+        Escrever escrever = new Escrever();
+        escrever.escrever();
+        
+        // Sem instanciar, usando apenas Static
+        // Escrever.escreverNome();
+        
+        ScannerExercicio.verificarNumero();
     }
 }
