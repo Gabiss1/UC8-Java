@@ -3,16 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.rockpaperscissors;
-import java.util.Scanner;
 
 /**
  *
  * @author GABRIELGARCEZDEOLIVE
  */
 public class Duel {
-        String vencedor;
+    String vencedor;
     
-    public void duel(){
+    public String duel(){
         Player player = new Player();
         String escolhaBot = this.bot();
         String escolhaPlayer;
@@ -22,8 +21,10 @@ public class Duel {
         escolhaPlayer = player.getEscolhido();
         
         this.compare(escolhaPlayer, escolhaBot);
+        //this.compare("Tesoura", "Tesoura");
         System.out.println("Player - "+escolhaPlayer+" VS "+escolhaBot+" - Bot");
-        System.out.println("Você "+vencedor+" a primeira partida!");
+        System.out.println("Você "+vencedor+" essa partida!");
+        return this.vencedor;
     }
     
     public String bot(){

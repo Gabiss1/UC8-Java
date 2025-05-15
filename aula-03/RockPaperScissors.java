@@ -11,7 +11,7 @@ package com.mycompany.rockpaperscissors;
 public class RockPaperScissors {
 
     public static void main(String[] args) {
-        Duel duel = new Duel();
-        duel.choose();
+        Game game = new Game();
+        game.CheckScore();
     }
 }
