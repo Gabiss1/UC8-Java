@@ -9,20 +9,20 @@ package harrypotterjtable;
  * @author GABRIELGARCEZDEOLIVE
  */
 public class Student {
-    private String nome;
-    private String personalidade;
+    private String name;
+    private String personality;
 
-    public Student(String nome, String personalidade) {
-        this.nome = nome;
-        this.personalidade = personalidade;
+    public Student(String name, String personality) {
+        this.name = name;
+        this.personality = personality;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public String getPersonalidade() {
-        return personalidade;
+    public String getPersonality() {
+        return personality;
     }
     
     

@@ -86,7 +86,7 @@
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="labelGrif" alignment="0" max="32767" attributes="0"/>
                               <Component id="jScrollPane5" alignment="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="jButton1" alignment="0" pref="230" max="32767" attributes="0"/>
+                              <Component id="btnSelector" alignment="0" pref="230" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -95,7 +95,7 @@
                                   <Component id="jScrollPane6" min="-2" pref="230" max="-2" attributes="0"/>
                               </Group>
                               <Component id="labelSlyt" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnExpulse" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="labelStudents" alignment="0" max="32767" attributes="0"/>
@@ -113,8 +113,8 @@
                   <Component id="jScrollPane3" min="-2" pref="157" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jButton2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="btnSelector" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="btnExpulse" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -161,15 +161,21 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btnSelector">
           <Properties>
             <Property name="text" type="java.lang.String" value="Selector Hat"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSelectorActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="btnExpulse">
           <Properties>
             <Property name="text" type="java.lang.String" value="Expulse"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExpulseActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane5">
           <AuxValues>

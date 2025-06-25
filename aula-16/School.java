@@ -14,31 +14,58 @@ import javax.swing.table.DefaultTableModel;
 public class School extends javax.swing.JFrame {
 
     private DefaultTableModel newStudentTable, TableSlyt, TableGrif, TableRaven, TableHuffle;
+    DefaultTableModel[] tablesModel;
     JTable[] tables;
+    int grifStudents;
+    int slytStudents;
+    int huffleStudents;
+    int ravenStudents;
 
     /**
      * Creates new form Escola
      */
-    public School() {
+    public School(Student[] students) {
         initComponents();
         newStudentTable = new DefaultTableModel();
         TableSlyt = new DefaultTableModel();
         TableGrif = new DefaultTableModel();
         TableRaven = new DefaultTableModel();
         TableHuffle = new DefaultTableModel();
-        
-        
+                
         tableNewStudents.setModel(newStudentTable);
         tableSlyt.setModel(TableSlyt);
         tableGrif.setModel(TableGrif);
         tableRaven.setModel(TableRaven);
         tableHuffle.setModel(TableHuffle);
         
+        
+        
         this.tables = new JTable[]{tableSlyt, tableGrif, tableRaven, tableHuffle};
         
-        // for(JTable houses: tables){}
+        this.tablesModel = new DefaultTableModel[]{TableSlyt, TableGrif, TableRaven, TableHuffle, newStudentTable};
         
+        for(DefaultTableModel table: tablesModel){
+        table.addColumn("Name");
+        table.addColumn("Personality");        
+        }
         
+        for(Student student : students){
+            
+            newStudentTable.addRow(new Object[]{student.getName(), student.getPersonality()});
+        }
+        
+    }
+    
+    public void VerifyStudents(){
+        grifStudents = TableGrif.getRowCount();
+        slytStudents = TableSlyt.getRowCount();
+        huffleStudents = TableHuffle.getRowCount();
+        ravenStudents = TableRaven.getRowCount();
+        
+        labelGrif.setText("Gryffindor: "+grifStudents+" Students");
+        labelSlyt.setText("Slytherin: "+slytStudents+" Students");
+        labelRaven.setText("Ravenclaw: "+ravenStudents+" Students");
+        labelHuffle.setText("Hufflepuff: "+huffleStudents+" Students");
     }
 
     /**
@@ -55,8 +82,8 @@ public class School extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableNewStudents = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnSelector = new javax.swing.JButton();
+        btnExpulse = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         tableGrif = new javax.swing.JTable();
         jScrollPane6 = new javax.swing.JScrollPane();
@@ -117,9 +144,19 @@ public class School extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tableNewStudents);
 
-        jButton1.setText("Selector Hat");
+        btnSelector.setText("Selector Hat");
+        btnSelector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelectorActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Expulse");
+        btnExpulse.setText("Expulse");
+        btnExpulse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExpulseActionPerformed(evt);
+            }
+        });
 
         tableGrif.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -242,14 +279,14 @@ public class School extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(labelGrif, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
+                            .addComponent(btnSelector, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(labelSlyt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(btnExpulse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(labelStudents, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -262,8 +299,8 @@ public class School extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExpulse, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelSlyt, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -297,6 +334,54 @@ public class School extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectorActionPerformed
+        int line = tableNewStudents.getSelectedRow();
+        String choosenPersonality = tableNewStudents.getValueAt(line, 1).toString();
+        String choosenName = tableNewStudents.getValueAt(line, 0).toString();
+        System.out.println(choosenPersonality);
+        
+        switch(choosenPersonality){
+            case "Leal":
+                TableHuffle.addRow(new Object[]{choosenName, choosenPersonality});
+                break;
+            case "Ousado":
+                TableGrif.addRow(new Object[]{choosenName, choosenPersonality});
+                break;
+            case "Astuto":
+                TableSlyt.addRow(new Object[]{choosenName, choosenPersonality});
+                break;
+            case "Inteligente":
+                TableRaven.addRow(new Object[]{choosenName, choosenPersonality});
+                break; 
+            case "Astuta":
+                TableSlyt.addRow(new Object[]{choosenName, choosenPersonality});
+                break;
+            case "Ousada":
+                TableGrif.addRow(new Object[]{choosenName, choosenPersonality});
+                break;
+
+        }
+        newStudentTable.removeRow(line);
+        VerifyStudents();
+    }//GEN-LAST:event_btnSelectorActionPerformed
+
+    private void btnExpulseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExpulseActionPerformed
+        
+        if (tableSlyt.getSelectedRow() != -1){
+            TableSlyt.removeRow(tableSlyt.getSelectedRow());
+        } else if (tableGrif.getSelectedRow() != -1){
+            TableGrif.removeRow(tableGrif.getSelectedRow());
+        } else if (tableRaven.getSelectedRow() != -1){
+            TableRaven.removeRow(tableRaven.getSelectedRow());
+        } else if(tableHuffle.getSelectedRow() != -1){
+            TableHuffle.removeRow(tableHuffle.getSelectedRow());
+        } else {
+            System.out.println("Deu ruim"); 
+        }
+        
+        VerifyStudents();
+    }//GEN-LAST:event_btnExpulseActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -328,14 +413,14 @@ public class School extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new School().setVisible(true);
+                //new School().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnExpulse;
+    private javax.swing.JButton btnSelector;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
